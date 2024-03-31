@@ -1,0 +1,6 @@
+
+output/*
+.terraform
+.terraform.lock.hcl
+*.zip
+terraform.*

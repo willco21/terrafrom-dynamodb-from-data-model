@@ -1,0 +1,440 @@
+{
+  "ModelName": "discussion-forum",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Mar 31, 2024, 08:22 PM",
+    "DateLastModified": "Mar 31, 2024, 08:22 PM",
+    "Description": "",
+    "AWSService": "Amazon DynamoDB",
+    "Version": "3.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "Forum",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "ForumName",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "Category",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Threads",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "Messages",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "Views",
+          "AttributeType": "N"
+        }
+      ],
+      "TableData": [
+        {
+          "ForumName": {
+            "S": "Amazon DynamoDB"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "2"
+          },
+          "Messages": {
+            "N": "4"
+          },
+          "Views": {
+            "N": "1000"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon Simple Notification Service"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "5"
+          },
+          "Messages": {
+            "N": "5"
+          },
+          "Views": {
+            "N": "1200"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon Simple Queue Service"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "9"
+          },
+          "Messages": {
+            "N": "6"
+          },
+          "Views": {
+            "N": "1300"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon MQ"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "22"
+          },
+          "Messages": {
+            "N": "7"
+          },
+          "Views": {
+            "N": "1400"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon EMR"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "15"
+          },
+          "Messages": {
+            "N": "8"
+          },
+          "Views": {
+            "N": "600"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "AWS Data Pipeline"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "19"
+          },
+          "Messages": {
+            "N": "9"
+          },
+          "Views": {
+            "N": "500"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon Athena"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "43"
+          },
+          "Messages": {
+            "N": "10"
+          },
+          "Views": {
+            "N": "55"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "AWS Step Functions"
+          },
+          "Category": {
+            "S": "Amazon Web Services"
+          },
+          "Threads": {
+            "N": "30"
+          },
+          "Messages": {
+            "N": "11"
+          },
+          "Views": {
+            "N": "99"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "Thread",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "ForumName",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "Subject",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "Message",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "LastPostedBy",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Replies",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "Views",
+          "AttributeType": "N"
+        }
+      ],
+      "TableData": [
+        {
+          "ForumName": {
+            "S": "Amazon DynamoDB"
+          },
+          "Subject": {
+            "S": "Tagging tables"
+          },
+          "Message": {
+            "S": "DynamoDB now supports tagging tables when you create them in the AWS GovCloud (US) Regions"
+          },
+          "LastPostedBy": {
+            "S": "carlos@example.com"
+          },
+          "Replies": {
+            "N": "5"
+          },
+          "Views": {
+            "N": "30"
+          }
+        },
+        {
+          "ForumName": {
+            "S": "Amazon DynamoDB"
+          },
+          "Subject": {
+            "S": "On-demand and transactions"
+          },
+          "Message": {
+            "S": "DynamoDB on-demand and transactions now available in the AWS GovCloud (US) Regions"
+          },
+          "LastPostedBy": {
+            "S": "john@example.com"
+          },
+          "Replies": {
+            "N": "3"
+          },
+          "Views": {
+            "N": "99"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    },
+    {
+      "TableName": "Reply",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "Id",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "ReplyDateTime",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "PostedBy",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Message",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "PostedBy-Message-Index",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PostedBy",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "Message",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "Id": {
+            "S": "1"
+          },
+          "ReplyDateTime": {
+            "S": "7/1/2019"
+          },
+          "PostedBy": {
+            "S": "nikhil@example.com"
+          },
+          "Message": {
+            "S": "Testing the monitoring and alarm features as you approach your account limits in DynamoDB"
+          }
+        },
+        {
+          "Id": {
+            "S": "2"
+          },
+          "ReplyDateTime": {
+            "S": "7/5/2019"
+          },
+          "PostedBy": {
+            "S": "richard@example.com"
+          },
+          "Message": {
+            "S": "Ability to delete a global secondary index before its creation is completed will be very useful"
+          }
+        },
+        {
+          "Id": {
+            "S": "3"
+          },
+          "ReplyDateTime": {
+            "S": "7/15/2019"
+          },
+          "PostedBy": {
+            "S": "mary@example.com"
+          },
+          "Message": {
+            "S": "I really love the support for 25 unique items and 4 MB of data per transactional request"
+          }
+        },
+        {
+          "Id": {
+            "S": "4"
+          },
+          "ReplyDateTime": {
+            "S": "7/16/2019"
+          },
+          "PostedBy": {
+            "S": "paulo@example.com"
+          },
+          "Message": {
+            "S": "How can I check the current number of partitions in a DynamoDB table?"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      },
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}
